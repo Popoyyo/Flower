@@ -20,7 +20,9 @@
     <div class="flower" id="flower">
 
         <!-- GREEN CENTER -->
-        <div class="flower-center"></div>
+        <button class="flower-center" onclick="resetFlower()">
+    CENTER
+        </button>
 
 
         <!-- GREEN STEMS -->
@@ -133,6 +135,7 @@
      ========================================= -->
 
 
+
 <script>
 
 let openedPetal = null;
@@ -152,7 +155,7 @@ function showPanel(number) {
 
 
     /* =====================================
-       ANOTHER PETAL IS ALREADY OPEN
+       ANOTHER PETAL IS OPEN
        ===================================== */
 
     if (
@@ -169,12 +172,7 @@ function showPanel(number) {
 
     if (openedPetal === number) {
 
-        selectedPanel.classList.remove("show");
-
-        flower.style.transform =
-            "translate(-50%, -50%)";
-
-        openedPetal = null;
+        resetFlower();
 
         return;
     }
@@ -190,19 +188,10 @@ function showPanel(number) {
 
 
     /* =====================================
-       MOVEMENT DISTANCE
+       MOVEMENT
        ===================================== */
 
     const distance = 300;
-
-
-    /*
-       For diagonal directions we use
-       0.707 (sin/cos of 45 degrees).
-
-       This prevents the diagonal movement
-       from being twice as strong.
-    */
 
     const diagonal =
         distance * 0.707;
@@ -213,14 +202,12 @@ function showPanel(number) {
 
 
     /* =====================================
-       PETAL DIRECTIONS
+       DIRECTIONS
        ===================================== */
 
     switch (number) {
 
-        /* -------------------------------
-           PETAL 1 — TOP
-           ------------------------------- */
+        /* TOP */
 
         case 1:
 
@@ -230,9 +217,7 @@ function showPanel(number) {
             break;
 
 
-        /* -------------------------------
-           PETAL 2 — TOP RIGHT
-           ------------------------------- */
+        /* TOP RIGHT */
 
         case 2:
 
@@ -242,9 +227,7 @@ function showPanel(number) {
             break;
 
 
-        /* -------------------------------
-           PETAL 3 — RIGHT
-           ------------------------------- */
+        /* RIGHT */
 
         case 3:
 
@@ -254,9 +237,7 @@ function showPanel(number) {
             break;
 
 
-        /* -------------------------------
-           PETAL 4 — BOTTOM RIGHT
-           ------------------------------- */
+        /* BOTTOM RIGHT */
 
         case 4:
 
@@ -266,9 +247,7 @@ function showPanel(number) {
             break;
 
 
-        /* -------------------------------
-           PETAL 5 — BOTTOM
-           ------------------------------- */
+        /* BOTTOM */
 
         case 5:
 
@@ -278,9 +257,7 @@ function showPanel(number) {
             break;
 
 
-        /* -------------------------------
-           PETAL 6 — BOTTOM LEFT
-           ------------------------------- */
+        /* BOTTOM LEFT */
 
         case 6:
 
@@ -290,9 +267,7 @@ function showPanel(number) {
             break;
 
 
-        /* -------------------------------
-           PETAL 7 — LEFT
-           ------------------------------- */
+        /* LEFT */
 
         case 7:
 
@@ -302,9 +277,7 @@ function showPanel(number) {
             break;
 
 
-        /* -------------------------------
-           PETAL 8 — TOP LEFT
-           ------------------------------- */
+        /* TOP LEFT */
 
         case 8:
 
@@ -328,7 +301,48 @@ function showPanel(number) {
         "px)";
 }
 
+
+/* =========================================
+   CENTER BUTTON
+   ========================================= */
+
+function resetFlower() {
+
+    const flower =
+        document.querySelector(".flower");
+
+
+    /* =====================================
+       HIDE ALL PANELS
+       ===================================== */
+
+    document
+        .querySelectorAll(".display-panel")
+        .forEach(function(panel) {
+
+            panel.classList.remove("show");
+
+        });
+
+
+    /* =====================================
+       RETURN FLOWER TO ORIGINAL POSITION
+       ===================================== */
+
+    flower.style.transform =
+        "translate(-50%, -50%)";
+
+
+    /* =====================================
+       NO PETAL OPEN
+       ===================================== */
+
+    openedPetal = null;
+}
+
 </script>
+
+
 
 
 
