@@ -138,7 +138,7 @@ let openedPetal = null;
 
 
 /* =========================================
-   SHOW / HIDE PANEL
+   PETAL CLICK
    ========================================= */
 
 function showPanel(number) {
@@ -151,177 +151,141 @@ function showPanel(number) {
 
 
     /* =====================================
-       IF A PETAL IS ALREADY OPEN
+       IF ANOTHER PETAL IS OPEN
+       DO NOTHING
        ===================================== */
 
-    if (openedPetal !== null) {
-
-        /* If clicking the SAME petal -> close it */
-
-        if (openedPetal === number) {
-
-            selectedPanel.classList.remove("show");
-
-            flower.style.transform =
-                "translate(-50%, -50%)";
-
-            openedPetal = null;
-
-            return;
-        }
+    if (
+        openedPetal !== null &&
+        openedPetal !== number
+    ) {
+        return;
+    }
 
 
-        /*
-           Another petal is already open.
-           Do nothing.
-        */
+    /* =====================================
+       CLICK SAME PETAL
+       CLOSE + CENTER
+       ===================================== */
+
+    if (openedPetal === number) {
+
+        selectedPanel.classList.remove("show");
+
+        flower.style.transform =
+            "translate(-50%, -50%)";
+
+        openedPetal = null;
 
         return;
     }
 
 
     /* =====================================
-       REMEMBER WHICH PETAL IS OPEN
+       OPEN PANEL
        ===================================== */
+
+    selectedPanel.classList.add("show");
 
     openedPetal = number;
 
 
     /* =====================================
-       SHOW THE PANEL
+       MOVE FLOWER
        ===================================== */
 
-    selectedPanel.classList.add("show");
+    let x = 0;
+    let y = 0;
 
 
     /*
-       Wait until the panel has been displayed
-       and its position can be measured.
+       How far the flower moves.
+
+       Increase this number if you want
+       the movement to be stronger.
     */
 
-    requestAnimationFrame(function() {
-
-        requestAnimationFrame(function() {
-
-            centerPanel(
-                flower,
-                selectedPanel
-            );
-
-        });
-
-    });
-
-}
-
-
-/* =========================================
-   CENTER SELECTED PANEL ON SCREEN
-   ========================================= */
-
-function centerPanel(flower, panel) {
-
-    const panelRect =
-        panel.getBoundingClientRect();
+    const distance = 300;
 
 
     /* =====================================
-       ACTUAL CENTER OF THE PHONE SCREEN
+       PETAL DIRECTIONS
        ===================================== */
 
-    const screenCenterX =
-        window.innerWidth / 2;
+    switch (number) {
 
-    const screenCenterY =
-        window.innerHeight / 2;
+        /* TOP PETAL */
+        case 1:
+            x = 0;
+            y = distance;
+            break;
+
+
+        /* TOP RIGHT */
+        case 2:
+            x = -distance;
+            y = distance;
+            break;
+
+
+        /* RIGHT */
+        case 3:
+            x = -distance;
+            y = 0;
+            break;
+
+
+        /* BOTTOM RIGHT */
+        case 4:
+            x = -distance;
+            y = -distance;
+            break;
+
+
+        /* BOTTOM */
+        case 5:
+            x = 0;
+            y = -distance;
+            break;
+
+
+        /* BOTTOM LEFT */
+        case 6:
+            x = distance;
+            y = -distance;
+            break;
+
+
+        /* LEFT */
+        case 7:
+            x = distance;
+            y = 0;
+            break;
+
+
+        /* TOP LEFT */
+        case 8:
+            x = distance;
+            y = distance;
+            break;
+    }
 
 
     /* =====================================
-       ACTUAL CENTER OF THE PANEL
-       ===================================== */
-
-    const panelCenterX =
-        panelRect.left +
-        (panelRect.width / 2);
-
-    const panelCenterY =
-        panelRect.top +
-        (panelRect.height / 2);
-
-
-    /* =====================================
-       DISTANCE PANEL NEEDS TO MOVE
-       ===================================== */
-
-    const moveX =
-        screenCenterX -
-        panelCenterX;
-
-    const moveY =
-        screenCenterY -
-        panelCenterY;
-
-
-    /* =====================================
-       MOVE THE WHOLE FLOWER
+       MOVE WHOLE FLOWER
        ===================================== */
 
     flower.style.transform =
         "translate(-50%, -50%) " +
         "translate(" +
-        moveX +
+        x +
         "px, " +
-        moveY +
+        y +
         "px)";
-
 }
 
-
-/* =========================================
-   HANDLE PHONE ROTATION / RESIZE
-   ========================================= */
-
-window.addEventListener("resize", function() {
-
-    if (openedPetal === null) {
-        return;
-    }
-
-
-    const flower =
-        document.querySelector(".flower");
-
-    const panel =
-        document.querySelector(
-            ".panel-" + openedPetal
-        );
-
-
-    /*
-       Reset first so we don't calculate
-       from the previous camera position.
-    */
-
-    flower.style.transform =
-        "translate(-50%, -50%)";
-
-
-    requestAnimationFrame(function() {
-
-        requestAnimationFrame(function() {
-
-            centerPanel(
-                flower,
-                panel
-            );
-
-        });
-
-    });
-
-});
-
 </script>
+
 
 </body>
 </html>
