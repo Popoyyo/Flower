@@ -147,7 +147,7 @@ function showPanel(number) {
 
 
     /* =====================================
-       CHECK IF A PETAL IS ALREADY OPEN
+       CHECK IF ANOTHER PANEL IS OPEN
        ===================================== */
 
     const openPanel =
@@ -155,12 +155,8 @@ function showPanel(number) {
 
 
     /* =====================================
-       IF ANOTHER PETAL IS OPEN
-       
-       DO NOTHING.
-       
-       User must close the current petal
-       before opening another one.
+       ANOTHER PETAL IS OPEN
+       DO NOTHING
        ===================================== */
 
     if (openPanel && openPanel !== selectedPanel) {
@@ -176,63 +172,79 @@ function showPanel(number) {
 
         selectedPanel.classList.remove("show");
 
-        /* Return flower to center */
-
         flower.style.transform =
-            "translate(0px, 0px)";
+            "translate(-50%, -50%)";
 
         return;
     }
 
 
     /* =====================================
-       SHOW SELECTED PANEL
+       RESET FLOWER BEFORE CALCULATING
+       ===================================== */
+
+    flower.style.transform =
+        "translate(-50%, -50%)";
+
+
+    /* =====================================
+       SHOW PANEL
        ===================================== */
 
     selectedPanel.classList.add("show");
 
 
-    /* =====================================
-       WAIT FOR PANEL TO APPEAR
-       ===================================== */
+    /*
+       Wait for the panel to become visible.
+    */
 
     requestAnimationFrame(function() {
 
+        /*
+           Get the actual phone viewport.
+        */
+
         const wrapperRect =
             wrapper.getBoundingClientRect();
+
+
+        /*
+           Get the actual position of the
+           selected placeholder.
+        */
 
         const panelRect =
             selectedPanel.getBoundingClientRect();
 
 
         /* =================================
-           CENTER OF PHONE SCREEN
+           SCREEN CENTER
            ================================= */
 
         const screenCenterX =
+            wrapperRect.left +
             wrapperRect.width / 2;
 
         const screenCenterY =
+            wrapperRect.top +
             wrapperRect.height / 2;
 
 
         /* =================================
-           CENTER OF PLACEHOLDER
+           PANEL CENTER
            ================================= */
 
         const panelCenterX =
             panelRect.left +
-            panelRect.width / 2 -
-            wrapperRect.left;
+            panelRect.width / 2;
 
         const panelCenterY =
             panelRect.top +
-            panelRect.height / 2 -
-            wrapperRect.top;
+            panelRect.height / 2;
 
 
         /* =================================
-           CALCULATE FLOWER MOVEMENT
+           HOW FAR PANEL IS FROM SCREEN CENTER
            ================================= */
 
         const moveX =
@@ -243,15 +255,33 @@ function showPanel(number) {
 
 
         /* =================================
-           MOVE WHOLE FLOWER
+           GET CURRENT FLOWER POSITION
+           ================================= */
+
+        const flowerRect =
+            flower.getBoundingClientRect();
+
+
+        /*
+           Because the flower's transform uses
+           translate(-50%, -50%), compensate for
+           the existing centered position.
+        */
+
+        const currentTransform =
+            flower.style.transform;
+
+
+        /* =================================
+           MOVE THE WHOLE FLOWER
            ================================= */
 
         flower.style.transform =
-            "translate(" +
+            "translate(calc(-50% + " +
             moveX +
-            "px, " +
+            "px), calc(-50% + " +
             moveY +
-            "px)";
+            "px))";
 
     });
 
