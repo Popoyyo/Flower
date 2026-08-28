@@ -132,6 +132,7 @@
      JAVASCRIPT
      ========================================= -->
 
+
 <script>
 
 let openedPetal = null;
@@ -151,8 +152,7 @@ function showPanel(number) {
 
 
     /* =====================================
-       IF ANOTHER PETAL IS OPEN
-       DO NOTHING
+       ANOTHER PETAL IS ALREADY OPEN
        ===================================== */
 
     if (
@@ -164,8 +164,7 @@ function showPanel(number) {
 
 
     /* =====================================
-       CLICK SAME PETAL
-       CLOSE + CENTER
+       SAME PETAL = CLOSE
        ===================================== */
 
     if (openedPetal === number) {
@@ -191,21 +190,26 @@ function showPanel(number) {
 
 
     /* =====================================
-       MOVE FLOWER
+       MOVEMENT DISTANCE
        ===================================== */
 
-    let x = 0;
-    let y = 0;
+    const distance = 300;
 
 
     /*
-       How far the flower moves.
+       For diagonal directions we use
+       0.707 (sin/cos of 45 degrees).
 
-       Increase this number if you want
-       the movement to be stronger.
+       This prevents the diagonal movement
+       from being twice as strong.
     */
 
-    const distance = 300;
+    const diagonal =
+        distance * 0.707;
+
+
+    let x = 0;
+    let y = 0;
 
 
     /* =====================================
@@ -214,65 +218,105 @@ function showPanel(number) {
 
     switch (number) {
 
-        /* TOP PETAL */
+        /* -------------------------------
+           PETAL 1 — TOP
+           ------------------------------- */
+
         case 1:
+
             x = 0;
             y = distance;
+
             break;
 
 
-        /* TOP RIGHT */
+        /* -------------------------------
+           PETAL 2 — TOP RIGHT
+           ------------------------------- */
+
         case 2:
-            x = -distance;
-            y = distance;
+
+            x = -diagonal;
+            y = diagonal;
+
             break;
 
 
-        /* RIGHT */
+        /* -------------------------------
+           PETAL 3 — RIGHT
+           ------------------------------- */
+
         case 3:
+
             x = -distance;
             y = 0;
+
             break;
 
 
-        /* BOTTOM RIGHT */
+        /* -------------------------------
+           PETAL 4 — BOTTOM RIGHT
+           ------------------------------- */
+
         case 4:
-            x = -distance;
-            y = -distance;
+
+            x = -diagonal;
+            y = -diagonal;
+
             break;
 
 
-        /* BOTTOM */
+        /* -------------------------------
+           PETAL 5 — BOTTOM
+           ------------------------------- */
+
         case 5:
+
             x = 0;
             y = -distance;
+
             break;
 
 
-        /* BOTTOM LEFT */
+        /* -------------------------------
+           PETAL 6 — BOTTOM LEFT
+           ------------------------------- */
+
         case 6:
-            x = distance;
-            y = -distance;
+
+            x = diagonal;
+            y = -diagonal;
+
             break;
 
 
-        /* LEFT */
+        /* -------------------------------
+           PETAL 7 — LEFT
+           ------------------------------- */
+
         case 7:
+
             x = distance;
             y = 0;
+
             break;
 
 
-        /* TOP LEFT */
+        /* -------------------------------
+           PETAL 8 — TOP LEFT
+           ------------------------------- */
+
         case 8:
-            x = distance;
-            y = distance;
+
+            x = diagonal;
+            y = diagonal;
+
             break;
     }
 
 
     /* =====================================
-       MOVE WHOLE FLOWER
+       MOVE FLOWER
        ===================================== */
 
     flower.style.transform =
@@ -285,6 +329,8 @@ function showPanel(number) {
 }
 
 </script>
+
+
 
 
 </body>
