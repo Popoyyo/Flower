@@ -1,284 +1,469 @@
 * {
-  box-sizing: border-box;
-  }
+    box-sizing: border-box;
+}
 
 body {
-margin: 0;
-min-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-background: #f8f8f8;
-overflow: hidden;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8f8f8;
+    overflow: hidden;
 }
 
 .main-container {
-position: relative;
-width: 100vw;
-height: 100vh;
-overflow: hidden;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .flower-wrapper {
-position: absolute;
-width: 100%;
-height: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .flower {
-position: absolute;
-width: 700px;
-height: 700px;
-left: 50%;
-top: 50%;
---center-x: 350px;
---center-y: 350px;
---distance: 210px;
-transform: translate(-50%, -50%);
-transition: transform 0.5s ease;
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    left: 50%;
+    top: 50%;
+
+    --center-x: 350px;
+    --center-y: 350px;
+    --distance: 210px;
+
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s ease;
 }
 
 .flower-center {
-position: absolute;
-width: 250px;
-height: 250px;
-left: var(--center-x);
-top: var(--center-y);
-transform: translate(-50%, -50%);
-background: #979306;
-border: none;
-border-radius: 50%;
-z-index: 2;
-}
+    position: absolute;
+    width: 250px;
+    height: 250px;
 
-.stem {
-position: absolute;
-width: 20px;
-height: var(--distance);
-left: var(--center-x);
-top: var(--center-y);
-background: #4caf50;
-border-radius: 20px;
-transform-origin: center bottom;
-z-index: 1;
-}
+    left: var(--center-x);
+    top: var(--center-y);
 
-.panel-1.show {
-    transform: translate(-50%, -50%) translateY(-370px) scale(1);
-}
+    transform: translate(-50%, -50%);
 
-.panel-2.show {
-    transform: translate(-50%, -50%) translate(265px, -265px) scale(1);
-}
+    background: #979306;
+    border: none;
+    border-radius: 50%;
 
-.panel-3.show {
-    transform: translate(-50%, -50%) translateX(370px) scale(1);
-}
-
-.panel-4.show {
-    transform: translate(-50%, -50%) translate(265px, 265px) scale(1);
-}
-
-.panel-5.show {
-    transform: translate(-50%, -50%) translateY(370px) scale(1);
-}
-
-.panel-6.show {
-    transform: translate(-50%, -50%) translate(-265px, 265px) scale(1);
-}
-
-.panel-7.show {
-    transform: translate(-50%, -50%) translateX(-370px) scale(1);
-}
-
-.panel-8.show {
-    transform: translate(-50%, -50%) translate(-265px, -265px) scale(1);
+    z-index: 2;
 }
 
 .petal {
-position: absolute;
-width: 160px;
-height: 275px;
-left: var(--center-x);
-top: var(--center-y);
-margin: 0;
-border: none;
-border-radius: 50%;
-background: #ffb6d5;
-color: #333;
-font-size: 17px;
-font-weight: bold;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-z-index: 5;
-box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-transform-origin: center center;
-transition: filter 0.2s ease;
+    position: absolute;
+
+    width: 160px;
+    height: 250px;
+
+    left: var(--center-x);
+    top: var(--center-y);
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #ffb6d5;
+    color: #333;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 5;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.15);
+
+    transform-origin: center center;
+
+    transition: filter 0.2s ease;
 }
 
 .petal-1 {
-transform: translate(-50%, -50%) translateY(calc(var(--distance) * -1));
+    transform:
+        translate(-50%, -50%)
+        translateY(calc(var(--distance) * -1));
 }
 
 .petal-2 {
-transform: translate(-50%, -50%) rotate(45deg) translateY(calc(var(--distance) * -1));
+    transform:
+        translate(-50%, -50%)
+        rotate(45deg)
+        translateY(calc(var(--distance) * -1));
 }
 
 .petal-3 {
-transform: translate(-50%, -50%) rotate(90deg) translateY(calc(var(--distance) * -1));
+    transform:
+        translate(-50%, -50%)
+        rotate(90deg)
+        translateY(calc(var(--distance) * -1));
 }
 
 .petal-4 {
-transform: translate(-50%, -50%) rotate(135deg) translateY(calc(var(--distance) * -1));
+    transform:
+        translate(-50%, -50%)
+        rotate(135deg)
+        translateY(calc(var(--distance) * -1));
 }
 
 .petal-5 {
-transform: translate(-50%, -50%) rotate(180deg) translateY(calc(var(--distance) * -1));
+    transform:
+        translate(-50%, -50%)
+        rotate(180deg)
+        translateY(calc(var(--distance) * -1));
 }
 
 .petal-6 {
-transform: translate(-50%, -50%) rotate(225deg) translateY(calc(var(--distance) * -1));
+    transform:
+        translate(-50%, -50%)
+        rotate(225deg)
+        translateY(calc(var(--distance) * -1));
 }
 
 .petal-7 {
-transform: translate(-50%, -50%) rotate(270deg) translateY(calc(var(--distance) * -1));
+    transform:
+        translate(-50%, -50%)
+        rotate(270deg)
+        translateY(calc(var(--distance) * -1));
 }
 
 .petal-8 {
-transform: translate(-50%, -50%) rotate(315deg) translateY(calc(var(--distance) * -1));
+    transform:
+        translate(-50%, -50%)
+        rotate(315deg)
+        translateY(calc(var(--distance) * -1));
 }
 
 .petal:hover {
-filter: brightness(1.05);
+    filter: brightness(1.05);
 }
 
 .content-area {
-position: absolute;
-width: 100%;
-height: 100%;
-left: 0;
-top: 0;
-pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
 }
 
 .content-panel {
-position: absolute;
-width: 300px;
-height: 220px;
-left: 50%;
-top: 50%;
-background: white;
-border: 3px solid #979306;
-border-radius: 20px;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 22px;
-font-weight: bold;
-color: #333;
-z-index: 20;
-opacity: 0;
-visibility: hidden;
-pointer-events: none;
-transform: translate(-50%, -50%) scale(0);
-transition: transform 0.5s ease, opacity 0.3s ease, visibility 0.3s ease;
+    position: absolute;
+
+    padding: 0;
+
+    background: white;
+
+    border: 3px solid #979306;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    color: #333;
+
+    z-index: 20;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.content-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.panel-1 {
+    width: 300px;
+    height: 220px;
+    left: 50%;
+    top: 42%;
+}
+
+.panel-2 {
+    width: 300px;
+    height: 220px;
+    left: 72%;
+    top: 42%;
+}
+
+.panel-3 {
+    width: 300px;
+    height: 220px;
+    left: 72%;
+    top: 50%;
+}
+
+.panel-4 {
+    width: 300px;
+    height: 220px;
+    left: 70%;
+    top: 58%;
+}
+
+.panel-5 {
+    width: 300px;
+    height: 220px;
+    left: 50%;
+    top: 58%;
+}
+
+.panel-6 {
+    width: 315px;
+    height: 219px;
+    left: 30%;
+    top: 58%;
+}
+
+.panel-7 {
+    width: 300px;
+    height: 220px;
+    left: 29%;
+    top: 50%;
+}
+
+.panel-8 {
+    width: 300px;
+    height: 220px;
+    left: 29%;
+    top: 43%;
 }
 
 .content-panel.show {
-opacity: 1;
-visibility: visible;
-pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .panel-1.show {
-transform:
-translate(-50%, -50%)
-translateY(-350px)
-scale(1);
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 .panel-2.show {
-transform:
-translate(-50%, -50%)
-translate(250px, -250px)
-scale(1);
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 .panel-3.show {
-transform:
-translate(-50%, -50%)
-translateX(350px)
-scale(1);
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 .panel-4.show {
-transform:
-translate(-50%, -50%)
-translate(250px, 250px)
-scale(1);
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 .panel-5.show {
-transform:
-translate(-50%, -50%)
-translateY(350px)
-scale(1);
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 .panel-6.show {
-transform:
-translate(-50%, -50%)
-translate(-250px, 250px)
-scale(1);
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 .panel-7.show {
-transform:
-translate(-50%, -50%)
-translateX(-350px)
-scale(1);
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 .panel-8.show {
-transform:
-translate(-50%, -50%)
-translate(-250px, -250px)
-scale(1);
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
-
-
 
 @media (max-width: 600px) {
-.flower {
-width: 700px;
-height: 700px;
---center-x: 350px;
---center-y: 350px;
---distance: 210px;
-}
 
-```
-.flower-center {
-    width: 200px;
-    height: 200px;
-}
+    body {
+        width: 100vw;
+        height: 100vh;
+        min-height: 100dvh;
+    }
 
-.petal {
-    width: 135px;
-    height: 230px;
-    font-size: 15px;
-}
+    .main-container {
+        width: 100vw;
+        height: 100dvh;
+    }
 
-.content-panel {
-    width: 280px;
-    height: 200px;
-}
-```
+    .flower-wrapper {
+        width: 100vw;
+        height: 100dvh;
+    }
 
+    .flower {
+        width: 600px;
+        height: 600px;
+
+        --center-x: 300px;
+        --center-y: 300px;
+        --distance: 165px;
+    }
+
+    .flower-center {
+        width: 170px;
+        height: 170px;
+    }
+
+    .petal {
+        width: 95px;
+        height: 145px;
+        font-size: 14px;
+    }
+
+    .content-panel {
+        font-size: 18px;
+    }
+
+    .panel-1 {
+        width: 250px;
+        height: 180px;
+        left: 50%;
+        top: 42%;
+    }
+
+    .panel-2 {
+        width: 250px;
+        height: 180px;
+        left: 50%;
+        top: 50%;
+    }
+
+    .panel-3 {
+        width: 250px;
+        height: 180px;
+        left: 50%;
+        top: 50%;
+    }
+
+    .panel-4 {
+        width: 250px;
+        height: 180px;
+        left: 50%;
+        top: 50%;
+    }
+
+    .panel-5 {
+        width: 250px;
+        height: 180px;
+        left: 50%;
+        top: 50%;
+    }
+
+    .panel-6 {
+        width: 250px;
+        height: 180px;
+        left: 50%;
+        top: 50%;
+    }
+
+    .panel-7 {
+        width: 250px;
+        height: 180px;
+        left: 50%;
+        top: 50%;
+    }
+
+    .panel-8 {
+        width: 250px;
+        height: 180px;
+        left: 50%;
+        top: 50%;
+    }
+
+    .panel-1.show {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    .panel-2.show {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    .panel-3.show {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    .panel-4.show {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    .panel-5.show {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    .panel-6.show {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    .panel-7.show {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    .panel-8.show {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
 }

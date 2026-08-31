@@ -4,73 +4,74 @@ const flower = document.querySelector(".flower");
 
 function showPanel(number) {
 
-    const panel = document.querySelector(".panel-" + number);
 
-    if (!panel) {
-        return;
-    }
+const panel = document.querySelector(".panel-" + number);
 
-    if (openPetal === number) {
+if (!panel) {
+    return;
+}
 
-        panel.classList.remove("show");
+if (openPetal === number) {
 
-        flower.style.transform =
-            "translate(-50%, -50%)";
+    panel.classList.remove("show");
 
-        openPetal = null;
+    flower.style.transform =
+        "translate(-50%, -50%)";
 
-        return;
-    }
+    openPetal = null;
 
-    if (openPetal !== null) {
-        return;
-    }
+    return;
+}
 
-    openPetal = number;
+if (openPetal !== null) {
+    return;
+}
 
-    // Move flower immediately
-    if (number === 1) {
-        flower.style.transform =
-            "translate(-50%, -50%) translate(0px, 300px)";
-    }
+openPetal = number;
 
-    else if (number === 2) {
-        flower.style.transform =
-            "translate(-50%, -50%) translate(-210px, 210px)";
-    }
+if (number === 1) {
+    flower.style.transform =
+        "translate(-50%, -50%) translate(0px, 300px)";
+}
 
-    else if (number === 3) {
-        flower.style.transform =
-            "translate(-50%, -50%) translate(-300px, 0px)";
-    }
+else if (number === 2) {
+    flower.style.transform =
+        "translate(-50%, -50%) translate(-210px, 210px)";
+}
 
-    else if (number === 4) {
-        flower.style.transform =
-            "translate(-50%, -50%) translate(-210px, -210px)";
-    }
+else if (number === 3) {
+    flower.style.transform =
+        "translate(-50%, -50%) translate(-300px, 0px)";
+}
 
-    else if (number === 5) {
-        flower.style.transform =
-            "translate(-50%, -50%) translate(0px, -300px)";
-    }
+else if (number === 4) {
+    flower.style.transform =
+        "translate(-50%, -50%) translate(-210px, -210px)";
+}
 
-    else if (number === 6) {
-        flower.style.transform =
-            "translate(-50%, -50%) translate(210px, -210px)";
-    }
+else if (number === 5) {
+    flower.style.transform =
+        "translate(-50%, -50%) translate(0px, -300px)";
+}
 
-    else if (number === 7) {
-        flower.style.transform =
-            "translate(-50%, -50%) translate(300px, 0px)";
-    }
+else if (number === 6) {
+    flower.style.transform =
+        "translate(-50%, -50%) translate(210px, -210px)";
+}
 
-    else if (number === 8) {
-        flower.style.transform =
-            "translate(-50%, -50%) translate(210px, 210px)";
-    }
+else if (number === 7) {
+    flower.style.transform =
+        "translate(-50%, -50%) translate(300px, 0px)";
+}
 
-    // Show panel after delay
-    setTimeout(() => {
-        panel.classList.add("show");
-    }, 150); // 500ms delay
+else if (number === 8) {
+    flower.style.transform =
+        "translate(-50%, -50%) translate(210px, 210px)";
+}
+
+setTimeout(function() {
+    panel.classList.add("show");
+}, 100);
+
+
 }
